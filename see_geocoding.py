@@ -119,6 +119,12 @@ else:
             popup=f"Endereço: {row['endereco']}<br>Inscrição: {row['inscricao']}"
         ).add_to(marker_cluster)
 
-# Save the map
-m.save(f'{input_filename}.html')
-print(f"Map saved as {input_filename}.html")
+# Create html directory if it doesn't exist
+import os
+if not os.path.exists('html'):
+    os.makedirs('html')
+
+# Save the map to html folder
+html_path = os.path.join('html', f'{input_filename}.html')
+m.save(html_path)
+print(f"Map saved as {html_path}")
